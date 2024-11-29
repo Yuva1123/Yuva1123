@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll Transition Website</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+    }
+
+    /* Title Section */
+    .title-section {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: white;
+      color: black;
+      text-align: center;
+    }
+
+    .title-section h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+
+    .title-section p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+
+    /* Content Section */
+    .content-section {
+      height: 200vh;
+      padding: 50px;
+      background-color: black;
+      color: white;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .content-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #fff;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    .content-section p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+    }
+
+    .content-section a {
+      color: lightblue;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .content-section a:hover {
+      text-decoration: underline;
+    }
+
+    /* Smooth Scroll Button */
+    .scroll-button {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: black;
+      color: white;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: 2px solid black;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .scroll-button:hover {
+      background-color: white;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+  <!-- Title Section -->
+  <div class="title-section">
+    <h1>Welcome to Our Website</h1>
+    <p>Scroll down to explore more!</p>
+    <button class="scroll-button" onclick="scrollToContent()">Scroll Down</button>
+  </div>
+
+  <!-- Content Section -->
+  <div class="content-section">
+    <h2>About Us</h2>
+    <p>
+      We are passionate about web development and creating amazing user experiences.
+      This website showcases how to blend aesthetics with functionality in an engaging way.
+    </p>
+    <h2>Our Services</h2>
+    <p>
+      From web design to backend development, we offer comprehensive services to bring your
+      ideas to life. Let us help you build a strong online presence.
+    </p>
+    <h2>Contact Us</h2>
+    <p>
+      Got a question? Reach out to us at <a href="mailto:info@example.com">info@example.com</a>. 
+      We're here to help you!
+    </p>
+  </div>
+
+  <script>
+    function scrollToContent() {
+      const contentSection = document.querySelector('.content-section');
+      contentSection.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const viewportHeight = window.innerHeight;
+      const titleSectionHeight = document.querySelector('.title-section').offsetHeight;
+      const contentSection = document.querySelector('.content-section');
+
+      if (scrollTop >= titleSectionHeight) {
+        contentSection.style.backgroundColor = 'black';
+        contentSection.style.color = 'white';
+      } else {
+        contentSection.style.backgroundColor = 'white';
+        contentSection.style.color = 'black';
+      }
+    });
+  </script>
+</body>
+</html>
